@@ -2,6 +2,7 @@ import { type KeyId, useKeyboard } from "@keybr/keyboard";
 import { type Result } from "@keybr/result";
 import { type Settings } from "@keybr/settings";
 import { loadSounds, playSound } from "@keybr/sound";
+import { QMK_KEYCODES } from "@keybr/sval";
 import {
   Feedback,
   type LineList,
@@ -65,6 +66,10 @@ export const Controller = memo(function Controller({
   );
 });
 
+function translateToSvalCode(code: KeyId) {
+  return QMK_KEYCODES[code];
+}
+
 function useLessonState(
   progress: Progress,
   onResult: (result: Result) => void,
@@ -108,12 +113,18 @@ function useLessonState(
       {
         onKeyDown: (event) => {
           setDepressedKeys(
-            (state.depressedKeys = addKey(state.depressedKeys, event.code)),
+            (state.depressedKeys = addKey(
+              state.depressedKeys,
+              translateToSvalCode(event.code),
+            )),
           );
         },
         onKeyUp: (event) => {
           setDepressedKeys(
-            (state.depressedKeys = deleteKey(state.depressedKeys, event.code)),
+            (state.depressedKeys = deleteKey(
+              state.depressedKeys,
+              translateToSvalCode(event.code),
+            )),
           );
         },
         onInput: (event) => {
