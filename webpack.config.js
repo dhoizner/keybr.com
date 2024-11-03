@@ -180,7 +180,7 @@ export default [
     output: {
       path: join(import.meta.dirname, "root", "public", "assets"),
       clean: true,
-      publicPath: "/assets/",
+      publicPath: "/keybr.com/assets/",
       filename: `${filename}.js`,
       chunkFilename: `${chunkFilename}.js`,
       assetModuleFilename: `${assetModuleFilename}[ext]`,
