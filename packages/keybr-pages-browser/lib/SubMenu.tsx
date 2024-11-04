@@ -19,8 +19,6 @@ export function SubMenu({
   const { formatMessage } = useIntl();
   return (
     <div className={styles.root}>
-      <MailLink />
-      <DiscordLink />
       <GithubLink />
       <RouterLink to={Pages.termsOfService.path}>
         {formatMessage(Pages.termsOfService.link.label)}
@@ -28,9 +26,6 @@ export function SubMenu({
       <RouterLink to={Pages.privacyPolicy.path}>
         {formatMessage(Pages.privacyPolicy.link.label)}
       </RouterLink>
-      <LocaleSwitcher currentPath={currentPath} />
-      <TranslateLink />
-      <RemoveAdsLink />
     </div>
   );
 }
