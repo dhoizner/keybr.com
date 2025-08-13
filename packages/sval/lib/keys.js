@@ -159,7 +159,7 @@ addInitializer("load", () => {
   };
 
   KEY.canonical = (keystr) => {
-    if (keystr.match(/^0x/)) {
+    if (keystr.match && keystr.match(/^0x/)) {
       return keystr;
     }
     if (keystr in KEYALIASES) {
